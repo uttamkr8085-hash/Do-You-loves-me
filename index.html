@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Do You Love Me? 💗</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{min-height:100vh;background:#d9a6a6;font-family:Arial,sans-serif;display:flex;align-items:center;justify-content:center;overflow:hidden;color:#111}.card{width:min(500px,calc(100% - 32px));text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px}.gif{width:200px;height:190px;display:grid;place-items:center;font-size:105px;background:#f6caca;border-radius:28px;box-shadow:0 .8rem 2rem #0002;animation:float 2.5s ease-in-out infinite}.heart{font-size:70px}.card h1{font-size:clamp(28px,7vw,40px)}.card p{font-size:18px}.btn{display:flex;gap:25px;justify-content:center}.btn button{border:0;text-decoration:none;color:#111;background:#fff;padding:11px 27px;border-radius:66px;box-shadow:.5rem 1rem 3rem #0004;font-size:17px;cursor:pointer;transition:.2s}.btn button:hover{transform:translateY(-2px)}#no{position:relative}.hidden{display:none}.final{font-size:80px}.small{font-size:16px;opacity:.8}@keyframes float{50%{transform:translateY(-8px) rotate(2deg)}}@media(max-width:480px){.gif{width:180px;height:170px;font-size:90px}.btn{gap:18px}}
+</style></head>
+<body>
+<main class="card" id="app"></main>
+<script>
+const steps=[
+ {emoji:'🥰',title:'Do you love me? 🤗',text:'Chiku is all yours'},
+ {emoji:'🙄',title:'Please think again! 🙄',text:'itni jaldi na matt bolo😥'},
+ {emoji:'🥺',title:'Ek aur baar Soch lo! 😣',text:'kyu aisa kar rahi ho Plzzz Man jao😣'},
+ {emoji:'😭',title:'Baby Man jao na! Kitna bhav khaogi 😭',text:'bhut glt baat hai yrr😭'}
+];
+let step=0;const app=document.getElementById('app');
+function render(){const s=steps[step];app.innerHTML=`<div class="gif">${s.emoji}</div><h1>${s.title}</h1><p>${s.text}</p><div class="btn"><button id="yes">Yes</button><button id="no">No</button></div>`;document.getElementById('yes').onclick=success;const no=document.getElementById('no');if(step<3)no.onclick=()=>{step++;render()};else{no.addEventListener('mouseenter',move);no.addEventListener('touchstart',move,{passive:true})}}
+function move(e){const el=e.currentTarget;el.style.position='fixed';el.style.top=Math.floor(Math.random()*75+12)+'%';el.style.left=Math.floor(Math.random()*75+12)+'%'}
+function success(){app.innerHTML=`<div class="gif final">💖</div><h1>I knew it! You Love me a lot 😘</h1><p class="small">Made with love ❤️</p>`}
+render();
+</script></body></html>
